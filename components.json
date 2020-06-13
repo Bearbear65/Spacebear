@@ -1,0 +1,21 @@
+[
+  {
+    "id": "$spb_main_script",
+    "type": "script",
+    "script": "src/main.lua",
+    "strict lua": true
+  },
+  {
+    "id": "$spb_graphics_texture",
+    "type": "animation",
+    "frames": [{"bmp": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP5DwQACg8EAf9iQEAAAAAASUVORK5CYII="}]
+  },
+  {
+    "id": "$spb_graphics_caret",
+    "type": "animation",
+    "frames": [
+      {"bmp": "iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAGElEQVR42mP5DwQMUMAIBDA2CwMOMKASAL2NBB1DxnSHAAAAAElFTkSuQmCC", "w": 3},
+      {"bmp": "iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAGElEQVR42mP5DwQMUMAIBDA2CwMOMKASAL2NBB1DxnSHAAAAAElFTkSuQmCC", "x": 3, "w": 3}
+    ]
+  }
+]
