@@ -17,14 +17,18 @@ function util.hex(hex)
   return rgb[1], rgb[2], rgb[3]
 end
 
-function util.function_list(list, name, ...)
+function util.function_list(list, fname, ...)
   assert(type(list) == "table")
-  assert(type(name) == "string")
+  assert(type(fname) == "string")
 
-  if list[name] then
-    return list[name](...)
+  if list[fname] then
+    return list[fname](...)
   end
   return "not found"
+end
+
+function util.quick_copy(t)
+  return {table.unpack(t)}
 end
 
 return util

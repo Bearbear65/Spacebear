@@ -7,7 +7,7 @@ local output = {}
 local cfg = require("cfg")
 local util = require("util")
 
-local terminal = Util.optStorage(TheoTown.getFileStorage(), "&spb_terminal")
+local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
 
 local caret
 function output.load_graphics()

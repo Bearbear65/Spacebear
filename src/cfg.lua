@@ -5,7 +5,7 @@
 local cfg = {}
 
 cfg.name = "Spacebear"
-cfg.version = "0.0.1"
+cfg.version = "0.0.2d"
 
 cfg.x = 25
 cfg.y = 25
@@ -15,6 +15,7 @@ cfg.h = 150
 cfg.statusbar_height = 12
 
 cfg.output_margin = 2
+
 cfg.view_scope = math.floor((cfg.h - (cfg.statusbar_height + cfg.output_margin * 2)) / 10)
 
 cfg.font = TheoTown.RESOURCES.skin.fontSmall
@@ -26,6 +27,7 @@ cfg.theme = {
   text = "#F1F2F2",
   caret = "#504E56",
   seperator = "#50B3DD",
+  highlight = "#D93CD4",
 }
 
 --- Keyboard config

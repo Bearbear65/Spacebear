@@ -10,6 +10,8 @@ local output = require("output")
 local input = require("shell/input")
 local writer = require("shell/writer")
 
+local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
+
 function script:init()
   gui.load_graphics()
   output.load_graphics()
@@ -23,19 +25,21 @@ function script:init()
 end
 
 function script:update()
-  gui.draw_main_window()
-  gui.draw_statusbar()
-  gui.draw_title()
-  gui.draw_clock()
-  keyboard.draw()
-  output.terminal_lines()
-  Drawing.drawText(collectgarbage("count"), 250, 120)
+  if terminal.visible then
+    gui.draw_main_window()
+    gui.draw_statusbar()
+    gui.draw_title()
+    gui.draw_clock()
+    keyboard.draw()
+    output.terminal_lines()
+  end
+  gui.draw_icon()
 end
 
 function script:earlyTap(_, _, x, y)
   local keyboard_output = keyboard.input(x, y)
   input.write(keyboard_output)
-  if gui.was_tapped(x, y) or keyboard_output then
+  if gui.was_tapped(x, y) or keyboard_output or gui.icon_was_tapped(x, y) then
     return false
   end
 end

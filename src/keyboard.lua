@@ -7,7 +7,7 @@ local util = require("util")
 
 local keyboard = {}
 
-local keyboard_memory = Util.optStorage(TheoTown.getFileStorage(), "&spb_keyboard")
+local keyboard_memory = Util.optStorage(TheoTown.getStorage(), "&spb_keyboard")
 
 local texture
 function keyboard.load_graphics()
@@ -52,6 +52,13 @@ local function build_special_keys()
     h = cfg.key_size,
     key = "_type:capslock",
   }
+  structure[#structure + 1] = {
+    x = cfg.key_x + (cfg.key_size + cfg.key_gap) * 4.5,
+    y = cfg.key_y + (cfg.key_size + cfg.key_gap) * 4,
+    w = (cfg.key_size + cfg.key_gap) * 6,
+    h = cfg.key_size,
+    key = "_type:space",
+  }
 end
 
 --- Builds keyboard structure
@@ -84,9 +91,8 @@ local function get_key(key)
     if not keyboard_memory.shifted then
       if keyboard_memory.capslock then
         return key:match("^(.+)/"):upper()
-      else
-        return key:match("^(.+)/")
       end
+      return key:match("^(.+)/")
     else
       return key:match("/+(.+)$")
     end

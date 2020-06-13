@@ -17,5 +17,19 @@
       {"bmp": "iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAGElEQVR42mP5DwQMUMAIBDA2CwMOMKASAL2NBB1DxnSHAAAAAElFTkSuQmCC", "w": 3},
       {"bmp": "iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAGElEQVR42mP5DwQMUMAIBDA2CwMOMKASAL2NBB1DxnSHAAAAAElFTkSuQmCC", "x": 3, "w": 3}
     ]
+  },
+  {
+    "id": "$spb_graphics_icon",
+    "type": "animation",
+    "frames": [
+      {"bmp": "graphics/spacebear_icon_1.png"},
+      {"bmp": "graphics/spacebear_icon_2.png"},
+      {"bmp": "graphics/spacebear_icon_3.png"},
+      {"bmp": "graphics/spacebear_icon_4.png"},
+      {"bmp": "graphics/spacebear_icon_5.png"},
+      {"bmp": "graphics/spacebear_icon_6.png"},
+      {"bmp": "graphics/spacebear_icon_7.png"},
+      {"bmp": "graphics/spacebear_icon_8.png"}
+    ]
   }
 ]

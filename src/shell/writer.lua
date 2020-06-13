@@ -6,7 +6,7 @@ local writer = {}
 
 local cfg = require("cfg")
 
-local terminal = Util.optStorage(TheoTown.getFileStorage(), "&spb_terminal")
+local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
 
 --- Inserts string in current terminal line
 function writer.print(content, colours)
@@ -26,7 +26,7 @@ end
 
 function writer.new_line()
   writer.println(
-    {"root/Users/Olsken", ">", false, "Hello ", "World"},
+    {"root/Users/Olsken", ">", false, ""},
     {[2] = cfg.theme.seperator}
   )
 end

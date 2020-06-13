@@ -4,11 +4,13 @@
 
 local input = {}
 
-local writer = require("shell/writer")
+local cfg = require("cfg")
 local util = require("util")
+local writer = require("shell/writer")
+local command = require("shell/command")
 
-local terminal = Util.optStorage(TheoTown.getFileStorage(), "&spb_terminal")
-local keyboard = Util.optStorage(TheoTown.getFileStorage(), "&spb_keyboard")
+local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
+local keyboard = Util.optStorage(TheoTown.getStorage(), "&spb_keyboard")
 
 -- NOTE: think of a better name :/
 
@@ -25,7 +27,15 @@ local special_key_functions = {
       terminal.lines("insert", {last_element:sub(1, -2)}, "content")
     end,
     ["enter"] = function()
+      local status = command.execute()
+      if status then
+        writer.println({""})
+      end
       writer.new_line()
+      terminal.halt_output = false
+    end,
+    ["space"] = function()
+      terminal.lines("append", " ")
     end,
     ["shift"] = function()
       keyboard.shifted = not keyboard.shifted
@@ -36,6 +46,15 @@ local special_key_functions = {
   },
 }
 
+local function set_highlight()
+  if terminal.lines("get_element", "content", -1) == false then
+    terminal.lines("insert", {[#terminal.lines[#terminal.lines].content] = cfg.theme.highlight}, "colours")
+    if terminal.lines("get_element", "content"):match("%s*%S+%s") then
+      terminal.lines("insert", {""}, "content")
+    end
+  end
+end
+
 function input.write(char)
   if not char then return end
   if char:match("^_.+") then
@@ -44,6 +63,7 @@ function input.write(char)
     terminal.lines("append", char)
     keyboard.shifted = false
   end
+  set_highlight()
 end
 
 return input

@@ -7,7 +7,7 @@
 local cfg = require("cfg")
 local util = require("util")
 
-local terminal = Util.optStorage(TheoTown.getFileStorage(), "&spb_terminal")
+local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
 
 
 local function set_index(index, t_size)
@@ -94,18 +94,28 @@ local line_functions = {
 
 --- Metatable for terminal line manipulation
 local line_mt = {
-  __call = function(t, name, ...) return util.function_list(line_functions, name, t, ...) end
+  __call = function(t, name, ...)
+    if terminal.halt_output then
+      if name == "insert" or name == "append" or name == "new" then
+        return
+      end
+    end
+    return util.function_list(line_functions, name, t, ...)
+  end
 }
 
 terminal.lines = setmetatable({}, line_mt)
 
+terminal.halt_output = false
+
 --- Control view scope
+terminal.visible = false
 terminal.start_index = nil
 terminal.end_index = nil
 terminal.view_scope_lock = false
 
 --- Keyboard memory
-local keyboard = Util.optStorage(TheoTown.getFileStorage(), "&spb_keyboard")
+local keyboard = Util.optStorage(TheoTown.getStorage(), "&spb_keyboard")
 
 keyboard.shifted = false
 keyboard.capslock = false
