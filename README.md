@@ -1,6 +1,6 @@
 ## Spacebear terminal
 
->*insert random motto here*
+>*clean as a cake*
 
 **do this before you publish or else I will hit you with a spoon**
   * make sure the code is clean & readable
