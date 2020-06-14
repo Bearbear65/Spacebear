@@ -6,6 +6,7 @@ local command = {}
 
 local util = require("util")
 local spbc = require("shell/spbc")
+local status = require("shell/status")
 
 local terminal = Util.optStorage(TheoTown.getStorage(), "&spb_terminal")
 
@@ -26,14 +27,18 @@ local function cut_directory(raw_content)
 end
 
 function command.execute()
-  local status = false
+  local executed = false
   local raw_content = util.quick_copy(terminal.lines("get_raw_data", "content"))
+  local data = cut_directory(raw_content)
 
-  raw_content = cut_directory(raw_content)
-  if #raw_content[1] == 0 then return status end
-  raw_content[1] = raw_content[1]:gsub(" ", ""):lower()
-  status = spbc.search(raw_content)
-  return status
+  if #data[1] == 0 then return executed end
+  data[1] = data[1]:gsub(" ", ""):lower()
+  executed = spbc.search(data)
+
+  if not executed then
+    status.throw_error("The command \""..data[1].."\" was not found.")
+  end
+  return true
 end
 
 return command

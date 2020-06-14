@@ -87,17 +87,14 @@ function keyboard.build()
 end
 
 local function get_key(key)
-  if not key:match("^_.+") then
-    if not keyboard_memory.shifted then
-      if keyboard_memory.capslock then
-        return key:match("^(.+)/"):upper()
-      end
-      return key:match("^(.+)/")
-    else
-      return key:match("/+(.+)$")
+  if key:match("^_.+") then return key end
+  if not keyboard_memory.shifted then
+    if keyboard_memory.capslock then
+      return key:match("^(.+)/"):upper()
     end
+    return key:match("^(.+)/")
   end
-  return key
+  return key:match("/+(.+)$")
 end
 
 local function draw_key(i)
@@ -107,11 +104,10 @@ local function draw_key(i)
 end
 
 local function draw_key_label(i)
-  if not structure[i].key:match("^_.+") then
-    Drawing.setColor(util.hex(cfg.theme.title))
-    Drawing.drawText(get_key(structure[i].key), structure[i].x + cfg.key_indent / 2, structure[i].y)
-    Drawing.reset()
-  end
+  if structure[i].key:match("^_.+") then return end
+  Drawing.setColor(util.hex(cfg.theme.title))
+  Drawing.drawText(get_key(structure[i].key), structure[i].x + cfg.key_indent / 2, structure[i].y)
+  Drawing.reset()
 end
 
 function keyboard.draw()

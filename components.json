@@ -22,14 +22,14 @@
     "id": "$spb_graphics_icon",
     "type": "animation",
     "frames": [
-      {"bmp": "graphics/spacebear_icon_1.png"},
-      {"bmp": "graphics/spacebear_icon_2.png"},
-      {"bmp": "graphics/spacebear_icon_3.png"},
-      {"bmp": "graphics/spacebear_icon_4.png"},
-      {"bmp": "graphics/spacebear_icon_5.png"},
-      {"bmp": "graphics/spacebear_icon_6.png"},
-      {"bmp": "graphics/spacebear_icon_7.png"},
-      {"bmp": "graphics/spacebear_icon_8.png"}
+      {"bmp": "graphics/spacebear_icon_f1.png"},
+      {"bmp": "graphics/spacebear_icon_f2.png"},
+      {"bmp": "graphics/spacebear_icon_f3.png"},
+      {"bmp": "graphics/spacebear_icon_f4.png"},
+      {"bmp": "graphics/spacebear_icon_f5.png"},
+      {"bmp": "graphics/spacebear_icon_f6.png"},
+      {"bmp": "graphics/spacebear_icon_f7.png"},
+      {"bmp": "graphics/spacebear_icon_f8.png"}
     ]
   }
 ]

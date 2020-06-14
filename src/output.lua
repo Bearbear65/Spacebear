@@ -31,14 +31,13 @@ local function draw_terminal_line(line, index, x, y)
 end
 
 local function set_view_scope()
-  if not terminal.view_scope_lock then
-    if #terminal.lines > cfg.view_scope then
-      terminal.start_index = (#terminal.lines - cfg.view_scope) + 1
-    else
-      terminal.start_index = 1
-    end
-    terminal.end_index = #terminal.lines
+  if terminal.view_scope_lock then return end
+  terminal.end_index = #terminal.lines
+  if #terminal.lines > cfg.view_scope then
+    terminal.start_index = (#terminal.lines - cfg.view_scope) + 1
+    return
   end
+  terminal.start_index = 1
 end
 
 function output.terminal_lines()

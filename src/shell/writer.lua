@@ -32,8 +32,8 @@ function writer.new_line()
 end
 
 function writer.new_state()
-  writer.println({cfg.name.." version: "..cfg.version})
-  writer.println({""})
+  writer.println{cfg.name.." version: "..cfg.version}
+  writer.println{""}
   writer.new_line()
 end
 

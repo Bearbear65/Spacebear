@@ -35,6 +35,7 @@ end
 
 function gui.draw_clock()
   local time = os.date("%H")..":"..os.date("%M")
+
   Drawing.setColor(util.hex(cfg.theme.title))
   Drawing.drawText(time, (cfg.x + cfg.w) - cfg.font:getWidth(time) - 1, (cfg.y + cfg.h) - 12, cfg.font)
   Drawing.reset()
@@ -43,12 +44,14 @@ end
 function gui.draw_icon()
   local frame = math.floor(Runtime.getTime() / 150 % (icon:getFrameCount() + 1))
   local height = select(2, Drawing.getSize())
+
   Drawing.drawImage(icon:getFrame(frame), 35, height - 30)
   Drawing.reset()
 end
 
 function gui.icon_was_tapped(x, y)
   local height = select(2, Drawing.getSize())
+
   if x >= 35 and x <= 56 and y >= height - 30 and y <= height - 17 then
     terminal.visible = not terminal.visible
     return true

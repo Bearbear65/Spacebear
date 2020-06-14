@@ -37,9 +37,14 @@ function script:update()
 end
 
 function script:earlyTap(_, _, x, y)
-  local keyboard_output = keyboard.input(x, y)
-  input.write(keyboard_output)
-  if gui.was_tapped(x, y) or keyboard_output or gui.icon_was_tapped(x, y) then
+  if terminal.visible then
+    local keyboard_output = keyboard.input(x, y)
+    input.write(keyboard_output)
+    if gui.was_tapped(x, y) or keyboard_output then
+      return false
+    end
+  end
+  if gui.icon_was_tapped(x, y) then
     return false
   end
 end

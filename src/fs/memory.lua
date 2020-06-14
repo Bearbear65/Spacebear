@@ -95,18 +95,36 @@ local line_functions = {
 --- Metatable for terminal line manipulation
 local line_mt = {
   __call = function(t, name, ...)
-    if terminal.halt_output then
-      if name == "insert" or name == "append" or name == "new" then
-        return
-      end
+    for i = 1, #terminal.halt do
+      if name == terminal.halt[i] then return end
     end
-    return util.function_list(line_functions, name, t, ...)
+    return util.function_table(line_functions, name, t, ...)
   end
 }
 
 terminal.lines = setmetatable({}, line_mt)
 
-terminal.halt_output = false
+local halt_mt = {
+  __call = function(t, ...)
+    local args = {...}
+    local defined = {
+      ["all"] = {"append", "remove", "insert", "new", "get_element", "get_raw_data"},
+      ["input"] = {"append", "insert", "new"},
+    }
+
+    for i = 1, #args do
+      if defined[args[i]] then
+        for j = 1, #defined[args[i]] do
+          t[#t + 1] = defined[args[i]][j]
+        end
+      else
+        t[#t + 1] = args[i]
+      end
+    end
+  end
+}
+
+terminal.halt = setmetatable({}, halt_mt)
 
 --- Control view scope
 terminal.visible = false

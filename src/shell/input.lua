@@ -29,10 +29,10 @@ local special_key_functions = {
     ["enter"] = function()
       local status = command.execute()
       if status then
-        writer.println({""})
+        writer.println{""}
       end
       writer.new_line()
-      terminal.halt_output = false
+      terminal.halt = setmetatable({}, getmetatable(terminal.halt))
     end,
     ["space"] = function()
       terminal.lines("append", " ")
@@ -58,7 +58,7 @@ end
 function input.write(char)
   if not char then return end
   if char:match("^_.+") then
-    util.function_list(special_key_functions[char:match("^_(.+):")], char:match(":(.+)$"))
+    util.function_table(special_key_functions[char:match("^_(.+):")], char:match(":(.+)$"))
   else
     terminal.lines("append", char)
     keyboard.shifted = false

@@ -5,7 +5,7 @@
 local cfg = {}
 
 cfg.name = "Spacebear"
-cfg.version = "0.0.2d"
+cfg.version = "0.0.2"
 
 cfg.x = 25
 cfg.y = 25
@@ -28,6 +28,7 @@ cfg.theme = {
   caret = "#504E56",
   seperator = "#50B3DD",
   highlight = "#D93CD4",
+  error = "#eb1354",
 }
 
 --- Keyboard config
